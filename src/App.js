@@ -1,31 +1,49 @@
-import {React, useState} from 'react'
+
+// npm i uuid
+
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import Header from './components/Header'
 import FeedbackList from './components/FeedbackList'
-import data from './data/data'
 import FeedbackStats from './components/FeedbackStats'
+import FeedbackForm from './components/FeedbackForm'
+import AboutPage from './pages/AboutPage'
+import AbouticonLink from './components/AbouticonLink'
+import { FeedbackProvider } from './context/FeedbackContext'
 
 export default function App(){
-    const [feedback, setFeedback] = useState(data)
     
 
-    const deleteFeedback = (id) => {
-        if (window.confirm('Are you sure you want to delete it?')){
-            setFeedback(feedback.filter((item) => item.id !== id))
-        }
-    }
     
     return (
-        <>
+        <FeedbackProvider>
+            <Router>
             <Header />
             <div className="container">
-            <FeedbackStats/>
-           
-            feedback={feedback}
-            handleDelete={deleteFeedback}
-            
-            
+              <Routes>
+              <Route exact path='/' element={
+
+                  <>
+                <FeedbackForm />
+                <FeedbackStats />
+                <FeedbackList/>
+                  </>
+
+                
+              }>
+                
+
+               </Route>
+
+                <Route path='/about' element={<AboutPage/>}/>
+               
+              </Routes> 
+              <AbouticonLink/>
+              
             </div>
-        </>
+        </Router>
+
+        </FeedbackProvider>
+        
 
        
         
@@ -35,7 +53,5 @@ export default function App(){
     
 }
 
-Header.defaultProps = {
-    Text: 'Feedback UI'
-}
+
 

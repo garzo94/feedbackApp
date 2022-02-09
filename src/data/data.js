@@ -5,12 +5,12 @@ const data =[
 
     },
     {id:2,
-        rating: 8,
+        rating: 5,
         text: 'Lorem bla bla bla hehe hehe hehe uqe pedo aqui'
   
     },
     {id:3,
-        rating: 8,
+        rating: 6,
         text: 'Lorem bla bla bla hehe hehe hehe uqe pedo aqui'
   
     }
